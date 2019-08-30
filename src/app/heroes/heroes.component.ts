@@ -12,7 +12,7 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
 
   // hero = "Windstorm";
-  // hero2 = "Krishna";\
+  // hero2 = "Krishna";
 
   heroes: Hero[];
   selectedHero : Hero;
@@ -25,6 +25,7 @@ export class HeroesComponent implements OnInit {
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    this.getHeroes();
   }
 
   onSelect(hero: Hero): void {
@@ -32,4 +33,7 @@ export class HeroesComponent implements OnInit {
     // console.log(hero);
   }
 
+  getHeroes(): void{
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  }
 }
